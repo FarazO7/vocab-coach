@@ -357,6 +357,8 @@ The region (`iad1` or `bom1`) is decided by measurement in M5; the default is `i
 - **ESLint is pinned at 9.39.5, not 10.** `eslint-plugin-react`, `jsx-a11y` and `import` (pulled in by `eslint-config-next`) don't yet support ESLint 10. npm marks 9.39.5 as no longer supported; it's dev tooling only.
 - **The demo's near-mastery item isn't always fourth.** D9 holds (it's due now, four items in total), but its retrievability sits close to two others, so it is elicited second to fourth depending on the time of day. All four fit in a 10-minute session.
 - **Intent commands.** The "stop" and "repeat" regexes only match command-like phrases ("let's stop here", "could you say that again"), so ordinary speech such as "at the end of the day" never ends a session.
+- **Provisional voice default (M2).** If `TTS_VOICE` is empty, the server uses `aura-2-harmonia-en`, my paper pick, so TTS works before you choose. It's an env value, not code; set it once you've heard the samples.
+- **Same-origin everywhere (M2).** The Origin check from D11 runs on all four routes, not just `/api/session`. A request without an Origin header (curl, scripts) is refused unless it sets one, which is why the smoke script does.
 - **A due word used spontaneously isn't elicited in the same turn.** The verdict arrives with that turn's LLM reply, so the engine waits one turn: an appropriate use removes the word from the queue, and an inappropriate one gets elicited next turn.
 
 ---

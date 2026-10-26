@@ -1,0 +1,16 @@
+node_modules/
+.next/
+out/
+coverage/
+.vercel/
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+
+# Secrets: only the example file is ever committed
+.env
+.env.*
+!.env.example
+
+# Voice samples rendered locally for review
+samples/

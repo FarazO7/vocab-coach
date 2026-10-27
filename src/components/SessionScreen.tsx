@@ -2,6 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState, useSyncExternalStore, type FormEvent } from "react";
+import { getActive, setActive } from "../client/active";
 import { createApi } from "../client/api";
 import { clockNow } from "../client/clock";
 import { SessionController, type Phase, type View } from "../client/controller";
@@ -10,7 +11,7 @@ import { formatDay } from "../client/labels";
 import { Player } from "../client/player";
 import { getStore } from "../client/store";
 import { DEFAULTS } from "../config/defaults";
-import { getItem, isItemId } from "../engine/lexicon";
+import { isItemId } from "../engine/lexicon";
 import type { Chip } from "../engine/session";
 import { RecapView } from "./RecapView";
 import { Button, Card, LinkButton, Loading, Notice } from "./ui";
@@ -46,7 +47,13 @@ export function SessionScreen() {
       clock: () => clockNow(store.get().clockOffsetMs),
     });
   });
-  useEffect(() => () => ctl.dispose(), [ctl]);
+  useEffect(() => {
+    setActive(ctl); // lets Under the hood read this session
+    return () => {
+      if (getActive() === ctl) setActive(null);
+      ctl.dispose();
+    };
+  }, [ctl]);
 
   const view = useSyncExternalStore(ctl.subscribe, ctl.getView, ctl.getView);
   if (!data) return <Loading />;
@@ -72,7 +79,8 @@ function Ready({ ctl, view, practise, firstSession }: { ctl: SessionController; 
           <li>About {firstSession ? DEFAULTS.firstSessionS / 60 : DEFAULTS.laterSessionS / 60} minutes.</li>
           <li>Tap the circle to talk, and tap again when you have finished. On a computer you can hold Space instead.</li>
           <li>Captions are always on, and you can type instead at any time.</li>
-          {practise && <li>We will start with &ldquo;{getItem(practise).lemma}&rdquo;.</li>}
+          {/* Not named here: showing the word before it is asked for turns recall into recognition (brief §2). */}
+          {practise && <li>We will start with the word you picked from your notebook.</li>}
         </ul>
       </Card>
       <div className="flex flex-wrap gap-3">

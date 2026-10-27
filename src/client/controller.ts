@@ -1,4 +1,5 @@
 import { DEFAULTS } from "../config/defaults";
+import { EMPTY_METER, type Meter } from "../config/pricing";
 import { detectIntent } from "../engine/intent";
 import { getItem } from "../engine/lexicon";
 import { tokensFromText, tokensFromWords } from "../engine/matcher";
@@ -65,6 +66,7 @@ export interface View {
   summary: SessionSummary | null;
   recapText: string | null;
   state: SessionState | null;
+  meter: Meter; // measured usage this session, for the cost meter
 }
 
 export interface Deps {
@@ -94,6 +96,7 @@ const INITIAL: View = {
   summary: null,
   recapText: null,
   state: null,
+  meter: EMPTY_METER,
 };
 
 const START_FAILED = "We couldn't start a session. Check your connection and try again.";
@@ -141,6 +144,20 @@ export class SessionController {
   private set(patch: Partial<View>): void {
     this.view = { ...this.view, ...patch, state: this.s };
     for (const l of this.listeners) l();
+  }
+
+  private bump(add: Partial<Meter>): void {
+    const m = this.view.meter;
+    this.set({
+      meter: {
+        sttSeconds: m.sttSeconds + (add.sttSeconds ?? 0),
+        ttsChars: m.ttsChars + (add.ttsChars ?? 0),
+        inputTokens: m.inputTokens + (add.inputTokens ?? 0),
+        cachedTokens: m.cachedTokens + (add.cachedTokens ?? 0),
+        cacheWriteTokens: m.cacheWriteTokens + (add.cacheWriteTokens ?? 0),
+        outputTokens: m.outputTokens + (add.outputTokens ?? 0),
+      },
+    });
   }
 
   private rate(): Rate {
@@ -232,6 +249,7 @@ export class SessionController {
       return;
     }
     this.set({ lastTurn: { response: null, stt } });
+    this.bump({ sttSeconds: stt.durationS });
     if (!stt.transcript.trim()) {
       await this.speak(EMPTY_TRANSCRIPT_REPLY, false); // no LLM call, not a learner turn
       return;
@@ -345,6 +363,10 @@ export class SessionController {
     } catch (e) {
       console.warn("turn failed:", e instanceof Error ? e.message : e); // fall through to the lexicon template
     }
+    if (response) {
+      const u = response.usage;
+      this.bump({ inputTokens: u.input_tokens, cachedTokens: u.cached_tokens, cacheWriteTokens: u.cache_write_tokens, outputTokens: u.output_tokens });
+    }
     const result: TurnResult | null = response?.result ?? null;
     const item = directive.item_id ? getItem(directive.item_id) : null;
     const reply = result?.reply ?? fallbackReply(directive, { item, topic: this.s.topic, sid: this.s.sid, summary: summary?.engine });
@@ -373,6 +395,7 @@ export class SessionController {
       this.set({ phase: "speaking" });
       try {
         const res = await this.deps.api.tts(text);
+        this.bump({ ttsChars: text.length });
         const outcome = await player.play(res, this.rate(), () => {
           const first = this.perf() - this.turnStarted;
           const l = this.view.latency;

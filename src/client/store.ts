@@ -1,4 +1,4 @@
-import { closeStaleSessions } from "../engine/replay";
+import { closeStaleSessions, dropFutureEvents } from "../engine/replay";
 import type { Ev, Profile } from "../engine/types";
 
 export const STORAGE_KEY = "vocab-coach";
@@ -131,6 +131,21 @@ export class Store {
     this.data = EMPTY;
     for (const l of this.listeners) l();
   }
+}
+
+export const DAY_MS = 86_400_000;
+
+/** Brief §9 clock controls: move the demo clock forward by whole days. */
+export function advanceClock(store: Store, days: number): void {
+  store.update((d) => ({ ...d, clockOffsetMs: d.clockOffsetMs + days * DAY_MS }));
+}
+
+/** I13: reset drops events dated after real time (they would break FSRS), closes any session that leaves open, and replays. */
+export function resetClock(store: Store, realNow: number): void {
+  store.update((d) => {
+    const kept = dropFutureEvents(d.events, realNow);
+    return { ...d, clockOffsetMs: 0, events: [...kept, ...closeStaleSessions(kept)] };
+  });
 }
 
 export function browserBackend(): Backend {

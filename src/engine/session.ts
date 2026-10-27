@@ -413,6 +413,9 @@ export type Chip =
   | { kind: "clue"; pos: string; learnt: Day | null; onset: string | null }
   | { kind: "options"; options: [string, string] };
 
+/** D14: Under the hood may name the awaited item only when the chip would (SEED, hint 3, after REVEAL). */
+export const awaitedVisible = (a: Await | null): boolean => !a || a.mode === "seed" || a.revealed || a.hints >= 3;
+
 /** Brief §8 target chip. The word only shows during SEED, at hint 3 (as one of two options) and after REVEAL. */
 export function targetChip(s: SessionState, model: Model, today: Day): Chip {
   const a = s.await;

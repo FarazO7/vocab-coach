@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { ClockBanner } from "../components/ClockBanner";
+import { UnderTheHood } from "../components/UnderTheHood";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -26,8 +28,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <Link href="/settings" className="hover:text-teal-800">
                 Settings
               </Link>
+              <Link href="/about" className="hover:text-teal-800">
+                About
+              </Link>
             </nav>
           </header>
+          <ClockBanner />
+          <UnderTheHood />
           <main>{children}</main>
         </div>
       </body>

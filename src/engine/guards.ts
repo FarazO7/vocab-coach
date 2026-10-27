@@ -44,6 +44,23 @@ export function fixDashes(text: string): string {
     .trim();
 }
 
+/**
+ * Replies are captions and speech, never rendered Markdown: the model sometimes adds **bold** or `code`,
+ * which would show as raw symbols and could be read aloud (found in the M5 run).
+ */
+export function stripMarkdown(text: string): string {
+  return text
+    .replace(/(\*\*|__)(.+?)\1/g, "$2")
+    .replace(/(^|[\s(“"'])[*_]([^*_\n]+?)[*_](?=[\s).,!?;:”"']|$)/g, "$1$2")
+    .replace(/`([^`]*)`/g, "$1")
+    .replace(/^[ \t]*(?:#{1,6}[ \t]+|[-*•][ \t]+)/gm, "")
+    .replace(/[*`]{2,}/g, "")
+    .trim();
+}
+
+/** Every reply and note goes through this before any other guard. */
+export const cleanText = (text: string): string => stripMarkdown(fixDashes(text));
+
 export function allowlistHits(tokens: Token[], list: readonly AllowEntry[]): AllowEntry[] {
   return list.filter((e) => matchesAnyForm(tokens, e.forms));
 }

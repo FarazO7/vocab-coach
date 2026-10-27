@@ -1,5 +1,5 @@
 import { DEFAULTS } from "../config/defaults";
-import { capWords, fixDashes, keepNote, leaksTarget, wordCount } from "../engine/guards";
+import { capWords, cleanText, keepNote, leaksTarget, wordCount } from "../engine/guards";
 import { ALLOWLIST, getItem, type LexItem } from "../engine/lexicon";
 import { fallbackReply } from "../engine/templates";
 import type { Directive, TurnResult } from "../engine/types";
@@ -24,10 +24,10 @@ function sanitise(r: TurnResult, req: TurnRequest): TurnResult {
   const seen = new Set<string>();
   const note = r.deferred_note;
   return {
-    reply: fixDashes(r.reply),
+    reply: cleanText(r.reply),
     judgement: req.directive.type === "JUDGE" ? r.judgement : null,
     spontaneous: r.spontaneous.filter((s) => allowed.has(s.item_id) && !seen.has(s.item_id) && Boolean(seen.add(s.item_id))),
-    deferred_note: note && keepNote(note, ALLOWLIST) ? { said: fixDashes(note.said), suggest: fixDashes(note.suggest) } : null,
+    deferred_note: note && keepNote(note, ALLOWLIST) ? { said: cleanText(note.said), suggest: cleanText(note.suggest) } : null,
     learner_state: r.learner_state,
   };
 }

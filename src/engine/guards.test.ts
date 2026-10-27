@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { DEFAULTS } from "../config/defaults";
-import { capWords, fixDashes, keepNote, leaksTarget, wordCount } from "./guards";
+import { capWords, cleanText, fixDashes, keepNote, leaksTarget, stripMarkdown, wordCount } from "./guards";
 import { ALLOWLIST, getItem, LEXICON } from "./lexicon";
 import { fallbackReply, hintOptions, recapLine } from "./templates";
 import type { Directive } from "./types";
@@ -81,6 +81,25 @@ describe("templated fallbacks (PLAN §2)", () => {
       'Well done today. You learned gruelling. meticulous needed a hint, so it comes back on Thursday. Big win: you used mitigate on your own. One phrase to polish: "an hour and a half". 3 words are due tomorrow.',
     );
     expect(wordCount(line)).toBeLessThanOrEqual(DEFAULTS.recapWordCap);
+  });
+});
+
+describe("Markdown never reaches captions or speech", () => {
+  it.each([
+    ["That sounds long. **Demanding** means needing a lot of effort.", "That sounds long. Demanding means needing a lot of effort."],
+    ["We say *mitigate the risk*.", "We say mitigate the risk."],
+    ["Try `take on` here.", "Try take on here."],
+    ["Use __this__ one.", "Use this one."],
+    ["- First, think of a word.", "First, think of a word."],
+    ["## Recap\nWell done.", "Recap\nWell done."],
+    ["I don't know isn't wrong, it's fine.", "I don't know isn't wrong, it's fine."],
+    ["“*Gruelling*” fits.", "“Gruelling” fits."],
+  ])("%j", (input, output) => {
+    expect(stripMarkdown(input)).toBe(output);
+  });
+
+  it("cleans dashes and Markdown together", () => {
+    expect(cleanText("**Nice** — well done.")).toBe("Nice, well done.");
   });
 });
 

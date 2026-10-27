@@ -1,0 +1,246 @@
+{
+  "ranAt": "2026-10-27T04:07:37.240Z",
+  "base": "http://localhost:3100",
+  "pipeline": {
+    "turns": 20,
+    "sttMs": {
+      "p50": 1538,
+      "p95": 3809,
+      "min": 1319,
+      "max": 3809
+    },
+    "turnMs": {
+      "p50": 2416,
+      "p95": 4534,
+      "min": 1663,
+      "max": 4534
+    },
+    "llmMs": {
+      "p50": 2411,
+      "p95": 4525,
+      "min": 1657,
+      "max": 4525
+    },
+    "ttsFirstMs": {
+      "p50": 1166,
+      "p95": 2222,
+      "min": 434,
+      "max": 2222
+    },
+    "totalMs": {
+      "p50": 5193,
+      "p95": 9573,
+      "min": 4243,
+      "max": 9573
+    },
+    "rows": [
+      {
+        "directive": "CONVERSE",
+        "sttMs": 2098.120916,
+        "turnMs": 3036.400583,
+        "llmMs": 2987,
+        "ttsFirstMs": 433.64854099999957,
+        "totalMs": 5568.17004,
+        "calls": 1
+      },
+      {
+        "directive": "ELICIT",
+        "sttMs": 1464.8478750000004,
+        "turnMs": 2694.9900829999997,
+        "llmMs": 2689,
+        "ttsFirstMs": 1237.956416000001,
+        "totalMs": 5397.794374000001,
+        "calls": 1
+      },
+      {
+        "directive": "HINT",
+        "sttMs": 2816.9537919999984,
+        "turnMs": 4533.939458000001,
+        "llmMs": 4525,
+        "ttsFirstMs": 2221.7026670000014,
+        "totalMs": 9572.595917,
+        "calls": 2
+      },
+      {
+        "directive": "JUDGE",
+        "sttMs": 1491.1236659999995,
+        "turnMs": 2415.7026250000017,
+        "llmMs": 2411,
+        "ttsFirstMs": 1027.1857909999999,
+        "totalMs": 4934.012082000001,
+        "calls": 1
+      },
+      {
+        "directive": "SEED",
+        "sttMs": 1939.869042000002,
+        "turnMs": 1770.7531670000026,
+        "llmMs": 1764,
+        "ttsFirstMs": 1142.9610829999983,
+        "totalMs": 4853.583292000003,
+        "calls": 1
+      },
+      {
+        "directive": "CONVERSE",
+        "sttMs": 1363.5821660000001,
+        "turnMs": 1775.7779999999984,
+        "llmMs": 1769,
+        "ttsFirstMs": 1284.3614579999994,
+        "totalMs": 4423.721623999998,
+        "calls": 1
+      },
+      {
+        "directive": "ELICIT",
+        "sttMs": 1664.0237080000006,
+        "turnMs": 1728.3454169999968,
+        "llmMs": 1723,
+        "ttsFirstMs": 1064.0400420000005,
+        "totalMs": 4456.409166999998,
+        "calls": 1
+      },
+      {
+        "directive": "HINT",
+        "sttMs": 1514.4521660000028,
+        "turnMs": 1943.504832999999,
+        "llmMs": 1938,
+        "ttsFirstMs": 1523.4527499999967,
+        "totalMs": 4981.409748999999,
+        "calls": 1
+      },
+      {
+        "directive": "JUDGE",
+        "sttMs": 1319.0078749999957,
+        "turnMs": 1834.017375000003,
+        "llmMs": 1828,
+        "ttsFirstMs": 1089.478415999998,
+        "totalMs": 4242.503665999997,
+        "calls": 1
+      },
+      {
+        "directive": "SEED",
+        "sttMs": 1649.7958749999962,
+        "turnMs": 2307.4363749999975,
+        "llmMs": 2302,
+        "ttsFirstMs": 1235.4896670000016,
+        "totalMs": 5192.721916999995,
+        "calls": 1
+      },
+      {
+        "directive": "CONVERSE",
+        "sttMs": 1542.885875,
+        "turnMs": 3138.1697920000006,
+        "llmMs": 3132,
+        "ttsFirstMs": 1337.2358339999992,
+        "totalMs": 6018.291501,
+        "calls": 1
+      },
+      {
+        "directive": "ELICIT",
+        "sttMs": 3809.1150419999976,
+        "turnMs": 2251.972041999994,
+        "llmMs": 2243,
+        "ttsFirstMs": 1165.922749999998,
+        "totalMs": 7227.0098339999895,
+        "calls": 1
+      },
+      {
+        "directive": "HINT",
+        "sttMs": 1439.2666249999893,
+        "turnMs": 3965.427874999994,
+        "llmMs": 3960,
+        "ttsFirstMs": 1393.416333000001,
+        "totalMs": 6798.110832999984,
+        "calls": 1
+      },
+      {
+        "directive": "JUDGE",
+        "sttMs": 1728.6601249999949,
+        "turnMs": 4259.173208000007,
+        "llmMs": 4252,
+        "ttsFirstMs": 928.445749999999,
+        "totalMs": 6916.279083000001,
+        "calls": 1
+      },
+      {
+        "directive": "SEED",
+        "sttMs": 1846.2438750000001,
+        "turnMs": 3493.8944159999955,
+        "llmMs": 3488,
+        "ttsFirstMs": 1102.6312920000055,
+        "totalMs": 6442.769583000001,
+        "calls": 1
+      },
+      {
+        "directive": "CONVERSE",
+        "sttMs": 1365.4877089999936,
+        "turnMs": 2554.184917000006,
+        "llmMs": 2549,
+        "ttsFirstMs": 1225.215750000003,
+        "totalMs": 5144.888376000003,
+        "calls": 1
+      },
+      {
+        "directive": "ELICIT",
+        "sttMs": 1487.8699170000036,
+        "turnMs": 1906.637917,
+        "llmMs": 1900,
+        "ttsFirstMs": 1129.9086249999964,
+        "totalMs": 4524.416459,
+        "calls": 1
+      },
+      {
+        "directive": "HINT",
+        "sttMs": 1523.0770420000044,
+        "turnMs": 1849.9860000000044,
+        "llmMs": 1844,
+        "ttsFirstMs": 1313.9493329999968,
+        "totalMs": 4687.012375000006,
+        "calls": 1
+      },
+      {
+        "directive": "JUDGE",
+        "sttMs": 1537.9832499999902,
+        "turnMs": 1662.5488749999931,
+        "llmMs": 1657,
+        "ttsFirstMs": 1158.936791,
+        "totalMs": 4359.468915999983,
+        "calls": 1
+      },
+      {
+        "directive": "SEED",
+        "sttMs": 1425.3242919999902,
+        "turnMs": 3849.918042000005,
+        "llmMs": 3845,
+        "ttsFirstMs": 1114.9567910000042,
+        "totalMs": 6390.199124999999,
+        "calls": 1
+      }
+    ]
+  },
+  "llm": {
+    "runs": 10,
+    "plainMs": {
+      "p50": 1779,
+      "p95": 3067,
+      "min": 1408,
+      "max": 3067
+    },
+    "streamFirstTokenMs": {
+      "p50": 1030,
+      "p95": 1584,
+      "min": 895,
+      "max": 1584
+    },
+    "streamReplyCompleteMs": {
+      "p50": 1307,
+      "p95": 1882,
+      "min": 1145,
+      "max": 1882
+    },
+    "streamTotalMs": {
+      "p50": 1560,
+      "p95": 3129,
+      "min": 1394,
+      "max": 3129
+    }
+  }
+}

@@ -60,6 +60,12 @@ describe("turn guards (brief §6, D6)", () => {
     expect(out).toMatchObject({ calls: 1, guards: [], fallback: false, usage: { input_tokens: 100, output_tokens: 20 } });
   });
 
+  it("strips Markdown before the leak check, so a bolded target is still caught", async () => {
+    const out = await runTurn(req(ELICIT), "sid", fake(ok({ reply: "Is there a **bottleneck** near you?" }), ok({ reply: "Where does **traffic** get stuck?" })));
+    expect(out.guards).toEqual(["leak"]);
+    expect(out.result.reply).toBe("Where does traffic get stuck?");
+  });
+
   it("keeps the judgement for JUDGE", async () => {
     const out = await runTurn(req(JUDGE), "sid", fake(ok({ judgement: { appropriate: false, confidence: 0.8, issue: "collocation" } })));
     expect(out.result.judgement).toEqual({ appropriate: false, confidence: 0.8, issue: "collocation" });

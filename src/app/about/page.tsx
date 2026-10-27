@@ -96,7 +96,7 @@ export default function About() {
             "FSRS was fitted to flashcard self-grades, so mapping spoken evidence onto it is itself a hypothesis.",
             "Speech recognition is measurably worse on Indian-accented English. On the Svarah benchmark, commercial Google and Azure Indian-English models had about 21% word error rate, against 7.2% for Whisper-large. When the recogniser is unsure about a target word, the coach asks once, then changes nothing for that word.",
             "The AI's judgement can be inconsistent. Every caption has a “Report a wrong correction” button, and reports are kept in your export.",
-            "The 40-word list is a draft written for this prototype and not yet reviewed; word levels are estimates.",
+            "The 40-word list was written for this prototype and approved by its product owner; word levels and frequency bands are estimates, not taken from a licensed list.",
             "Replies currently take a few seconds to start.",
             "Your progress stays in this browser and audio isn't stored. Your speech is transcribed by Deepgram, and the text is sent to OpenAI to write replies; OpenAI may keep API text for up to 30 days for abuse monitoring.",
           ]}

@@ -2,61 +2,61 @@
   {
     "id": "prepone", "phrase": "prepone",
     "forms": ["prepone", "prepones", "preponed", "preponing"],
-    "meaning": "move to an earlier time", "international": "bring forward", "reviewed": false
+    "meaning": "move to an earlier time", "international": "bring forward", "reviewed": true
   },
   {
     "id": "out_of_station", "phrase": "out of station",
     "forms": ["out of station"],
-    "meaning": "away from your home town", "international": "out of town", "reviewed": false
+    "meaning": "away from your home town", "international": "out of town", "reviewed": true
   },
   {
     "id": "do_the_needful", "phrase": "do the needful",
     "forms": ["do the needful", "does the needful", "did the needful", "doing the needful", "done the needful"],
-    "meaning": "do what is needed", "international": "do what's needed", "reviewed": false
+    "meaning": "do what is needed", "international": "do what's needed", "reviewed": true
   },
   {
     "id": "cousin_brother_sister", "phrase": "cousin brother or sister",
     "forms": ["cousin brother", "cousin brothers", "cousin sister", "cousin sisters"],
-    "meaning": "a cousin, with their gender made clear", "international": "cousin", "reviewed": false
+    "meaning": "a cousin, with their gender made clear", "international": "cousin", "reviewed": true
   },
   {
     "id": "co_brother", "phrase": "co-brother",
     "forms": ["co-brother", "co-brothers"],
-    "meaning": "the husband of your wife's sister", "international": "brother-in-law", "reviewed": false
+    "meaning": "the husband of your wife's sister", "international": "brother-in-law", "reviewed": true
   },
   {
     "id": "batchmate", "phrase": "batchmate",
     "forms": ["batchmate", "batchmates", "batch mate", "batch mates"],
-    "meaning": "someone who studied in the same year as you", "international": "classmate", "reviewed": false
+    "meaning": "someone who studied in the same year as you", "international": "classmate", "reviewed": true
   },
   {
     "id": "passed_out", "phrase": "passed out (graduated)",
     "forms": ["passed out", "pass out", "passing out"],
-    "meaning": "graduated from a school or college", "international": "graduated", "reviewed": false
+    "meaning": "graduated from a school or college", "international": "graduated", "reviewed": true
   },
   {
     "id": "timepass", "phrase": "timepass",
     "forms": ["timepass", "time pass"],
-    "meaning": "something done just to pass the time", "international": "a way to pass the time", "reviewed": false
+    "meaning": "something done just to pass the time", "international": "a way to pass the time", "reviewed": true
   },
   {
     "id": "have_a_doubt", "phrase": "have a doubt (a question)",
     "forms": ["have a doubt", "has a doubt", "had a doubt", "having a doubt"],
-    "meaning": "have a question", "international": "have a question", "reviewed": false
+    "meaning": "have a question", "international": "have a question", "reviewed": true
   },
   {
     "id": "revert", "phrase": "revert (reply)",
     "forms": ["revert", "reverts", "reverted", "reverting"],
-    "meaning": "reply", "international": "get back to you", "reviewed": false
+    "meaning": "reply", "international": "get back to you", "reviewed": true
   },
   {
     "id": "today_itself", "phrase": "today itself",
     "forms": ["today itself"],
-    "meaning": "today, not later", "international": "today", "reviewed": false
+    "meaning": "today, not later", "international": "today", "reviewed": true
   },
   {
     "id": "good_name", "phrase": "good name",
     "forms": ["good name"],
-    "meaning": "your name (a polite way to ask)", "international": "your name", "reviewed": false
+    "meaning": "your name (a polite way to ask)", "international": "your name", "reviewed": true
   }
 ]

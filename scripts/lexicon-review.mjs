@@ -29,6 +29,10 @@ const QUESTIONS = [
   "**Allowlist: passed out** means \"graduated\" in Indian English but \"fainted\" elsewhere. The allowlist only stops it being corrected; it never changes meaning detection. OK?",
 ];
 
+// Sign-off: the 40 words, 12 allowlist entries and judge-case labels were approved as drafted,
+// with every question above answered "keep as is".
+const APPROVED_ON = "27 Oct 2026";
+
 const cell = (s) => String(s).replaceAll("|", "\\|");
 const list = (xs) => (xs.length ? xs.map(cell).join("; ") : "none");
 
@@ -36,15 +40,25 @@ export function render() {
   const lexicon = read("src/data/lexicon.json");
   const allowlist = read("src/data/dialect_allowlist.json");
   const reviewed = lexicon.filter((i) => i.reviewed).length;
+  const allowReviewed = allowlist.filter((e) => e.reviewed).length;
+  const approved = reviewed === lexicon.length && allowReviewed === allowlist.length;
   const out = [];
 
   out.push("# Lexicon review", "");
   out.push("Generated from `src/data/lexicon.json` and `src/data/dialect_allowlist.json` by `npm run lexicon:review`. Do not edit by hand.", "");
-  out.push(`Status: ${reviewed} of ${lexicon.length} items reviewed; ${allowlist.filter((e) => e.reviewed).length} of ${allowlist.length} allowlist entries reviewed. Everything is \`author-drafted\` until you approve it.`, "");
-  out.push("How to review: tell me which rows to change (or approve all), and I'll update the JSON, set `reviewed: true`, and regenerate this file. Swaps from the brief's word list: none.", "");
+  if (approved) {
+    out.push(
+      `Status: approved ${APPROVED_ON}, as drafted: all ${lexicon.length} words, all ${allowlist.length} allowlist entries, and the judge-case labels in \`evals/judge-cases.json\`. Swaps from the brief's word list: none.`,
+      "",
+    );
+    out.push("To change anything now, propose it in `CHANGES.md` first (brief §0 rule 4). `test/approved-content.test.ts` fails if these files change without a new sign-off.", "");
+  } else {
+    out.push(`Status: ${reviewed} of ${lexicon.length} items reviewed; ${allowReviewed} of ${allowlist.length} allowlist entries reviewed. Everything is \`author-drafted\` until you approve it.`, "");
+    out.push("How to review: tell me which rows to change (or approve all), and I'll update the JSON, set `reviewed: true`, and regenerate this file. Swaps from the brief's word list: none.", "");
+  }
   out.push("Columns: **Hint 2** is the first sound the agent says; **Hint 3** is the wrong option offered next to the word; **Confusables** are never seeded or reviewed on the same day as the word.", "");
 
-  out.push("## Questions for you", "");
+  out.push(approved ? `## Review questions (answered ${APPROVED_ON}: keep everything as is)` : "## Questions for you", "");
   QUESTIONS.forEach((q, i) => out.push(`${i + 1}. ${q}`));
   out.push("");
 

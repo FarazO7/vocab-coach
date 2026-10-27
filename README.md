@@ -38,7 +38,7 @@ flowchart LR
 | `src/app/api/` | The four stateless routes: `session`, `stt`, `turn`, `tts`. |
 | `src/client/` | Versioned localStorage store, clock, API client, recorder, streaming player, and the session controller that wires engine, routes and audio. |
 | `src/components/`, `src/app/` | Screens: start, onboarding, home, session, recap, notebook, settings, about; Under the hood and the clock banner. |
-| `src/data/` | The 40-word lexicon and the Indian English allowlist (both drafts; see `LEXICON_REVIEW.md`). |
+| `src/data/` | The 40-word lexicon and the Indian English allowlist (approved 27 Oct 2026; see `LEXICON_REVIEW.md`). Changes go through `CHANGES.md`, and a test fails if they change without sign-off. |
 | `src/config/` | All tunable numbers (`defaults.ts`) and the prices behind the cost meter (`pricing.ts`). |
 | `docs/` | The brief, the research, the latency pass and the QA record. `PLAN.md` holds every design decision; `CHANGES.md` holds proposals awaiting approval. |
 
@@ -131,7 +131,7 @@ Every resolved ambiguity in the brief is listed, numbered and approved in `PLAN.
 
 - **Latency.** From India against a local server, the end of a turn to first audio measured 5.2 s at p50 and 9.6 s at p95, against a 2.5 s target. Most of it is distance to Deepgram's US servers and the LLM's own time. Deploying to `iad1` should help; `CHANGES.md` proposes streaming the reply into speech (C1) and, if needed, streaming speech recognition (C2). Details in `docs/LATENCY.md`.
 - **Voice not yet tried on real devices.** Typing mode is verified end to end; recording, barge-in and Space-to-talk are covered by tests with fake audio, and need a run on Safari, iPhone and Android (`docs/QA.md`).
-- **The word list and judge cases are drafts.** All 40 words and the 12 allowlist entries are `reviewed: false` until approved; levels and frequency bands are estimates. The judge agreed 100% with 30 clear-cut labelled sentences, which shows it works but not that it catches subtle errors.
+- **The word list is hand-written, not from a licensed source.** All 40 words, the 12 allowlist entries and the 30 judge-case labels were approved as drafted on 27 Oct 2026; levels and frequency bands are estimates. The judge agreed 100% with those 30 clear-cut sentences, which shows it works but not that it catches subtle errors.
 - **Speech recognition is weaker on Indian-accented English** (research §9). When it is unsure about a target word, the coach asks once, then changes nothing for that word.
 - **FSRS was fitted to flashcard self-grades.** Mapping spoken evidence onto it is a hypothesis, as is the whole approach's advantage over flashcards.
 - **No volume limit beyond spend caps.** Session tokens limit a session's length, not how many sessions a script can start.

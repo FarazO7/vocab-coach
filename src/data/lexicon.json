@@ -8,7 +8,7 @@
     "forms": ["meticulous"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "me-ti", "distractor": "careless", "confusables": [],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "procrastinate_v", "lemma": "procrastinate", "type": "word", "pos": "verb",
@@ -19,7 +19,7 @@
     "forms": ["procrastinate", "procrastinates", "procrastinated", "procrastinating"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "pro-cras", "distractor": "anticipate", "confusables": [],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "juggle_v", "lemma": "juggle", "type": "word", "pos": "verb",
@@ -30,7 +30,7 @@
     "forms": ["juggle", "juggles", "juggled", "juggling"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "ju", "distractor": "struggle", "confusables": ["struggle"],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "demanding_adj", "lemma": "demanding", "type": "word", "pos": "adjective",
@@ -41,7 +41,7 @@
     "forms": ["demanding"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "de-man", "distractor": "relaxing", "confusables": [],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "take_on_pv", "lemma": "take on", "type": "phrasal_verb", "pos": "phrasal verb",
@@ -52,7 +52,7 @@
     "forms": ["take on", "takes on", "took on", "taken on", "taking on"],
     "spelling_variants": [], "separable": true,
     "hint_onset": "ta", "distractor": "take off", "confusables": ["take off", "take over"],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "prioritise_v", "lemma": "prioritise", "type": "word", "pos": "verb",
@@ -63,7 +63,7 @@
     "forms": ["prioritise", "prioritises", "prioritised", "prioritising"],
     "spelling_variants": ["prioritize", "prioritizes", "prioritized", "prioritizing"], "separable": false,
     "hint_onset": "pri-o", "distractor": "postpone", "confusables": [],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "setback_n", "lemma": "setback", "type": "word", "pos": "noun",
@@ -74,7 +74,7 @@
     "forms": ["setback", "setbacks"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "set", "distractor": "comeback", "confusables": ["drawback"],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "rewarding_adj", "lemma": "rewarding", "type": "word", "pos": "adjective",
@@ -85,7 +85,7 @@
     "forms": ["rewarding"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "re-war", "distractor": "exhausting", "confusables": [],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "bottleneck_n", "lemma": "bottleneck", "type": "word", "pos": "noun",
@@ -96,7 +96,7 @@
     "forms": ["bottleneck", "bottlenecks"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "bot", "distractor": "shortcut", "confusables": [],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "gruelling_adj", "lemma": "gruelling", "type": "word", "pos": "adjective",
@@ -107,7 +107,7 @@
     "forms": ["gruelling"],
     "spelling_variants": ["grueling"], "separable": false,
     "hint_onset": "groo", "distractor": "thrilling", "confusables": [],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "congested_adj", "lemma": "congested", "type": "word", "pos": "adjective",
@@ -118,7 +118,7 @@
     "forms": ["congested"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "con-jes", "distractor": "deserted", "confusables": [],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "urban_sprawl_n", "lemma": "urban sprawl", "type": "phrase", "pos": "noun",
@@ -129,7 +129,7 @@
     "forms": ["urban sprawl"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "ur", "distractor": "urban renewal", "confusables": [],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "infrastructure_n", "lemma": "infrastructure", "type": "word", "pos": "noun",
@@ -140,7 +140,7 @@
     "forms": ["infrastructure", "infrastructures"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "in-fra", "distractor": "architecture", "confusables": [],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "bustling_adj", "lemma": "bustling", "type": "word", "pos": "adjective",
@@ -151,7 +151,7 @@
     "forms": ["bustling"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "bus", "distractor": "peaceful", "confusables": [],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "mitigate_v", "lemma": "mitigate", "type": "word", "pos": "verb",
@@ -162,7 +162,7 @@
     "forms": ["mitigate", "mitigates", "mitigated", "mitigating"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "mi-ti", "distractor": "aggravate", "confusables": ["militate"],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "deplete_v", "lemma": "deplete", "type": "word", "pos": "verb",
@@ -173,7 +173,7 @@
     "forms": ["deplete", "depletes", "depleted", "depleting"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "de-pl", "distractor": "replenish", "confusables": ["delete"],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "sustainable_adj", "lemma": "sustainable", "type": "word", "pos": "adjective",
@@ -184,7 +184,7 @@
     "forms": ["sustainable"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "sus-tay", "distractor": "disposable", "confusables": [],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "curb_v", "lemma": "curb", "type": "word", "pos": "verb",
@@ -195,7 +195,7 @@
     "forms": ["curb", "curbs", "curbed", "curbing"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "cur", "distractor": "boost", "confusables": ["kerb"],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "detrimental_adj", "lemma": "detrimental", "type": "word", "pos": "adjective",
@@ -206,7 +206,7 @@
     "forms": ["detrimental"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "de-tri", "distractor": "beneficial", "confusables": [],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "exacerbate_v", "lemma": "exacerbate", "type": "word", "pos": "verb",
@@ -217,7 +217,7 @@
     "forms": ["exacerbate", "exacerbates", "exacerbated", "exacerbating"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "ig-zas", "distractor": "alleviate", "confusables": [],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "ubiquitous_adj", "lemma": "ubiquitous", "type": "word", "pos": "adjective",
@@ -228,7 +228,7 @@
     "forms": ["ubiquitous"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "yoo-bik", "distractor": "unusual", "confusables": [],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "reliant_on_adj", "lemma": "reliant on", "type": "phrase", "pos": "adjective",
@@ -239,7 +239,7 @@
     "forms": ["reliant on"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "ri-ly", "distractor": "independent of", "confusables": ["reliable"],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "obsolete_adj", "lemma": "obsolete", "type": "word", "pos": "adjective",
@@ -250,7 +250,7 @@
     "forms": ["obsolete"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "ob-so", "distractor": "absolute", "confusables": ["absolute"],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "streamline_v", "lemma": "streamline", "type": "word", "pos": "verb",
@@ -261,7 +261,7 @@
     "forms": ["streamline", "streamlines", "streamlined", "streamlining"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "str", "distractor": "complicate", "confusables": [],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "drawback_n", "lemma": "drawback", "type": "word", "pos": "noun",
@@ -272,7 +272,7 @@
     "forms": ["drawback", "drawbacks"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "draw", "distractor": "benefit", "confusables": ["setback"],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "intrusive_adj", "lemma": "intrusive", "type": "word", "pos": "adjective",
@@ -283,7 +283,7 @@
     "forms": ["intrusive"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "in-troo", "distractor": "inclusive", "confusables": [],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "sedentary_adj", "lemma": "sedentary", "type": "word", "pos": "adjective",
@@ -294,7 +294,7 @@
     "forms": ["sedentary"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "se-den", "distractor": "active", "confusables": [],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "in_moderation_phr", "lemma": "in moderation", "type": "phrase", "pos": "phrase",
@@ -305,7 +305,7 @@
     "forms": ["in moderation"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "in mo", "distractor": "in excess", "confusables": [],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "unwind_v", "lemma": "unwind", "type": "word", "pos": "verb",
@@ -316,7 +316,7 @@
     "forms": ["unwind", "unwinds", "unwound", "unwinding"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "un-wy", "distractor": "rewind", "confusables": ["rewind"],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "cut_down_on_pv", "lemma": "cut down on", "type": "phrasal_verb", "pos": "phrasal verb",
@@ -327,7 +327,7 @@
     "forms": ["cut down on", "cuts down on", "cutting down on"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "cu", "distractor": "give up", "confusables": ["cut out"],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "hectic_adj", "lemma": "hectic", "type": "word", "pos": "adjective",
@@ -338,7 +338,7 @@
     "forms": ["hectic"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "hec", "distractor": "relaxed", "confusables": [],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "burnout_n", "lemma": "burnout", "type": "word", "pos": "noun",
@@ -349,7 +349,7 @@
     "forms": ["burnout", "burnouts"],
     "spelling_variants": ["burn-out"], "separable": false,
     "hint_onset": "bur", "distractor": "workout", "confusables": [],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "hands_on_adj", "lemma": "hands-on", "type": "word", "pos": "adjective",
@@ -360,7 +360,7 @@
     "forms": ["hands-on"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "han", "distractor": "theoretical", "confusables": [],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "rote_learning_n", "lemma": "rote learning", "type": "phrase", "pos": "noun",
@@ -371,7 +371,7 @@
     "forms": ["rote learning"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "ro", "distractor": "active learning", "confusables": [],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "disparity_n", "lemma": "disparity", "type": "word", "pos": "noun",
@@ -382,7 +382,7 @@
     "forms": ["disparity", "disparities"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "dis-pa", "distractor": "similarity", "confusables": [],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "accessible_adj", "lemma": "accessible", "type": "word", "pos": "adjective",
@@ -393,7 +393,7 @@
     "forms": ["accessible"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "ak-ses", "distractor": "exclusive", "confusables": ["acceptable"],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "foster_v", "lemma": "foster", "type": "word", "pos": "verb",
@@ -404,7 +404,7 @@
     "forms": ["foster", "fosters", "fostered", "fostering"],
     "spelling_variants": [], "separable": false,
     "hint_onset": "fos", "distractor": "hinder", "confusables": [],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "off_the_beaten_track_phr", "lemma": "off the beaten track", "type": "phrase", "pos": "phrase",
@@ -415,7 +415,7 @@
     "forms": ["off the beaten track"],
     "spelling_variants": ["off the beaten path"], "separable": false,
     "hint_onset": "off", "distractor": "on the tourist trail", "confusables": [],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "breathtaking_adj", "lemma": "breathtaking", "type": "word", "pos": "adjective",
@@ -426,7 +426,7 @@
     "forms": ["breathtaking"],
     "spelling_variants": ["breath-taking"], "separable": false,
     "hint_onset": "bre", "distractor": "disappointing", "confusables": [],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   },
   {
     "id": "immerse_yourself_in_phr", "lemma": "immerse yourself in", "type": "phrase", "pos": "phrase",
@@ -437,6 +437,6 @@
     "forms": ["immerse in", "immerses in", "immersed in", "immersing in"],
     "spelling_variants": [], "separable": true,
     "hint_onset": "i-mer", "distractor": "isolate yourself from", "confusables": [],
-    "source": "author-drafted", "reviewed": false
+    "source": "author-drafted", "reviewed": true
   }
 ]

@@ -6,11 +6,11 @@ import { matchItem, tokensFromText } from "./matcher";
 const matches = (text: string, item: (typeof LEXICON)[number]) => matchItem(tokensFromText(text), item) !== null;
 
 describe("lexicon (brief §4 entry rules)", () => {
-  it("has 40 unique items, all author-drafted and unreviewed", () => {
+  it("has 40 unique items, author-drafted and approved (27 Oct 2026)", () => {
     expect(LEXICON).toHaveLength(40);
     expect(new Set(LEXICON.map((i) => i.id)).size).toBe(40);
     expect(new Set(LEXICON.map((i) => i.lemma)).size).toBe(40);
-    expect(LEXICON.every((i) => i.source === "author-drafted" && i.reviewed === false)).toBe(true);
+    expect(LEXICON.every((i) => i.source === "author-drafted" && i.reviewed === true)).toBe(true);
   });
 
   it.each(LEXICON.map((i) => [i.id, i] as const))("%s follows the entry rules", (_, item) => {
@@ -54,7 +54,7 @@ describe("lexicon (brief §4 entry rules)", () => {
 });
 
 describe("dialect allowlist (brief §4)", () => {
-  it("starts with the brief's twelve forms, all unreviewed", () => {
+  it("holds the brief's twelve forms, all approved (27 Oct 2026)", () => {
     expect(ALLOWLIST.map((e) => e.id)).toEqual([
       "prepone",
       "out_of_station",
@@ -69,7 +69,7 @@ describe("dialect allowlist (brief §4)", () => {
       "today_itself",
       "good_name",
     ]);
-    expect(ALLOWLIST.every((e) => !e.reviewed)).toBe(true);
+    expect(ALLOWLIST.every((e) => e.reviewed)).toBe(true);
   });
 
   it("never overlaps a lexicon target", () => {

@@ -9,6 +9,7 @@
     "dev": "next dev",
     "build": "next build && node --env-file-if-exists=.env.local scripts/check-secrets.mjs",
     "smoke": "node scripts/smoke.mjs",
+    "eval:judge": "vitest run --config vitest.eval.config.mts && node scripts/judge-summary.mjs",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",

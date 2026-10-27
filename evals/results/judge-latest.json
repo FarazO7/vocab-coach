@@ -1,0 +1,634 @@
+{
+  "ranAt": "2026-10-27T04:04:15.420Z",
+  "model": "gpt-6-luna",
+  "report": {
+    "none": {
+      "cases": 30,
+      "noJudgement": 0,
+      "agreement": 1,
+      "kappa": 1,
+      "belowFloor": 0,
+      "confidentAgreement": 1,
+      "falseAccepts": [],
+      "falseRejects": [],
+      "llmMsP50": 2238,
+      "rows": [
+        {
+          "id": 1,
+          "item": "mitigate_v",
+          "label": true,
+          "verdict": true,
+          "confidence": 0.99,
+          "issue": "none",
+          "llmMs": 3196,
+          "guards": []
+        },
+        {
+          "id": 2,
+          "item": "mitigate_v",
+          "label": false,
+          "verdict": false,
+          "confidence": 0.94,
+          "issue": "collocation",
+          "llmMs": 2524,
+          "guards": []
+        },
+        {
+          "id": 3,
+          "item": "mitigate_v",
+          "label": false,
+          "verdict": false,
+          "confidence": 0.99,
+          "issue": "meaning",
+          "llmMs": 2690,
+          "guards": []
+        },
+        {
+          "id": 4,
+          "item": "meticulous_adj",
+          "label": true,
+          "verdict": true,
+          "confidence": 0.99,
+          "issue": "none",
+          "llmMs": 2529,
+          "guards": []
+        },
+        {
+          "id": 5,
+          "item": "meticulous_adj",
+          "label": false,
+          "verdict": false,
+          "confidence": 0.98,
+          "issue": "meaning",
+          "llmMs": 2965,
+          "guards": []
+        },
+        {
+          "id": 6,
+          "item": "meticulous_adj",
+          "label": true,
+          "verdict": true,
+          "confidence": 0.98,
+          "issue": "none",
+          "llmMs": 1781,
+          "guards": []
+        },
+        {
+          "id": 7,
+          "item": "bottleneck_n",
+          "label": true,
+          "verdict": true,
+          "confidence": 0.99,
+          "issue": "none",
+          "llmMs": 2271,
+          "guards": []
+        },
+        {
+          "id": 8,
+          "item": "bottleneck_n",
+          "label": false,
+          "verdict": false,
+          "confidence": 0.98,
+          "issue": "meaning",
+          "llmMs": 2112,
+          "guards": []
+        },
+        {
+          "id": 9,
+          "item": "bottleneck_n",
+          "label": true,
+          "verdict": true,
+          "confidence": 0.99,
+          "issue": "none",
+          "llmMs": 2026,
+          "guards": []
+        },
+        {
+          "id": 10,
+          "item": "gruelling_adj",
+          "label": true,
+          "verdict": true,
+          "confidence": 0.99,
+          "issue": "none",
+          "llmMs": 1780,
+          "guards": []
+        },
+        {
+          "id": 11,
+          "item": "gruelling_adj",
+          "label": false,
+          "verdict": false,
+          "confidence": 0.98,
+          "issue": "meaning",
+          "llmMs": 2074,
+          "guards": []
+        },
+        {
+          "id": 12,
+          "item": "gruelling_adj",
+          "label": true,
+          "verdict": true,
+          "confidence": 0.99,
+          "issue": "none",
+          "llmMs": 2718,
+          "guards": []
+        },
+        {
+          "id": 13,
+          "item": "deplete_v",
+          "label": true,
+          "verdict": true,
+          "confidence": 1,
+          "issue": "none",
+          "llmMs": 7866,
+          "guards": [
+            "llm_timeout"
+          ]
+        },
+        {
+          "id": 14,
+          "item": "deplete_v",
+          "label": false,
+          "verdict": false,
+          "confidence": 0.99,
+          "issue": "collocation",
+          "llmMs": 2285,
+          "guards": []
+        },
+        {
+          "id": 15,
+          "item": "deplete_v",
+          "label": false,
+          "verdict": false,
+          "confidence": 0.99,
+          "issue": "collocation",
+          "llmMs": 2299,
+          "guards": []
+        },
+        {
+          "id": 16,
+          "item": "obsolete_adj",
+          "label": true,
+          "verdict": true,
+          "confidence": 0.99,
+          "issue": "none",
+          "llmMs": 1795,
+          "guards": []
+        },
+        {
+          "id": 17,
+          "item": "obsolete_adj",
+          "label": false,
+          "verdict": false,
+          "confidence": 0.99,
+          "issue": "meaning",
+          "llmMs": 2582,
+          "guards": []
+        },
+        {
+          "id": 18,
+          "item": "obsolete_adj",
+          "label": true,
+          "verdict": true,
+          "confidence": 0.99,
+          "issue": "none",
+          "llmMs": 2442,
+          "guards": []
+        },
+        {
+          "id": 19,
+          "item": "sedentary_adj",
+          "label": true,
+          "verdict": true,
+          "confidence": 0.99,
+          "issue": "none",
+          "llmMs": 1787,
+          "guards": []
+        },
+        {
+          "id": 20,
+          "item": "sedentary_adj",
+          "label": false,
+          "verdict": false,
+          "confidence": 0.99,
+          "issue": "meaning",
+          "llmMs": 2238,
+          "guards": []
+        },
+        {
+          "id": 21,
+          "item": "sedentary_adj",
+          "label": true,
+          "verdict": true,
+          "confidence": 0.98,
+          "issue": "none",
+          "llmMs": 1974,
+          "guards": []
+        },
+        {
+          "id": 22,
+          "item": "take_on_pv",
+          "label": true,
+          "verdict": true,
+          "confidence": 1,
+          "issue": "none",
+          "llmMs": 1751,
+          "guards": []
+        },
+        {
+          "id": 23,
+          "item": "take_on_pv",
+          "label": false,
+          "verdict": false,
+          "confidence": 0.99,
+          "issue": "meaning",
+          "llmMs": 1900,
+          "guards": []
+        },
+        {
+          "id": 24,
+          "item": "take_on_pv",
+          "label": true,
+          "verdict": true,
+          "confidence": 0.99,
+          "issue": "none",
+          "llmMs": 1974,
+          "guards": []
+        },
+        {
+          "id": 25,
+          "item": "foster_v",
+          "label": true,
+          "verdict": true,
+          "confidence": 1,
+          "issue": "none",
+          "llmMs": 1724,
+          "guards": []
+        },
+        {
+          "id": 26,
+          "item": "foster_v",
+          "label": false,
+          "verdict": false,
+          "confidence": 0.99,
+          "issue": "meaning",
+          "llmMs": 1949,
+          "guards": []
+        },
+        {
+          "id": 27,
+          "item": "foster_v",
+          "label": true,
+          "verdict": true,
+          "confidence": 0.99,
+          "issue": "none",
+          "llmMs": 1898,
+          "guards": []
+        },
+        {
+          "id": 28,
+          "item": "breathtaking_adj",
+          "label": true,
+          "verdict": true,
+          "confidence": 0.99,
+          "issue": "none",
+          "llmMs": 2635,
+          "guards": []
+        },
+        {
+          "id": 29,
+          "item": "breathtaking_adj",
+          "label": false,
+          "verdict": false,
+          "confidence": 0.99,
+          "issue": "meaning",
+          "llmMs": 2481,
+          "guards": []
+        },
+        {
+          "id": 30,
+          "item": "breathtaking_adj",
+          "label": false,
+          "verdict": false,
+          "confidence": 0.99,
+          "issue": "meaning",
+          "llmMs": 2079,
+          "guards": []
+        }
+      ]
+    },
+    "low": {
+      "cases": 30,
+      "noJudgement": 0,
+      "agreement": 1,
+      "kappa": 1,
+      "belowFloor": 0,
+      "confidentAgreement": 1,
+      "falseAccepts": [],
+      "falseRejects": [],
+      "llmMsP50": 2305,
+      "rows": [
+        {
+          "id": 1,
+          "item": "mitigate_v",
+          "label": true,
+          "verdict": true,
+          "confidence": 0.99,
+          "issue": "none",
+          "llmMs": 2214,
+          "guards": []
+        },
+        {
+          "id": 2,
+          "item": "mitigate_v",
+          "label": false,
+          "verdict": false,
+          "confidence": 0.96,
+          "issue": "collocation",
+          "llmMs": 2380,
+          "guards": []
+        },
+        {
+          "id": 3,
+          "item": "mitigate_v",
+          "label": false,
+          "verdict": false,
+          "confidence": 0.99,
+          "issue": "meaning",
+          "llmMs": 2579,
+          "guards": []
+        },
+        {
+          "id": 4,
+          "item": "meticulous_adj",
+          "label": true,
+          "verdict": true,
+          "confidence": 0.99,
+          "issue": "none",
+          "llmMs": 1768,
+          "guards": []
+        },
+        {
+          "id": 5,
+          "item": "meticulous_adj",
+          "label": false,
+          "verdict": false,
+          "confidence": 0.99,
+          "issue": "meaning",
+          "llmMs": 2571,
+          "guards": []
+        },
+        {
+          "id": 6,
+          "item": "meticulous_adj",
+          "label": true,
+          "verdict": true,
+          "confidence": 0.98,
+          "issue": "none",
+          "llmMs": 1930,
+          "guards": []
+        },
+        {
+          "id": 7,
+          "item": "bottleneck_n",
+          "label": true,
+          "verdict": true,
+          "confidence": 0.99,
+          "issue": "none",
+          "llmMs": 1576,
+          "guards": []
+        },
+        {
+          "id": 8,
+          "item": "bottleneck_n",
+          "label": false,
+          "verdict": false,
+          "confidence": 0.99,
+          "issue": "meaning",
+          "llmMs": 2353,
+          "guards": []
+        },
+        {
+          "id": 9,
+          "item": "bottleneck_n",
+          "label": true,
+          "verdict": true,
+          "confidence": 0.98,
+          "issue": "none",
+          "llmMs": 2731,
+          "guards": []
+        },
+        {
+          "id": 10,
+          "item": "gruelling_adj",
+          "label": true,
+          "verdict": true,
+          "confidence": 0.99,
+          "issue": "none",
+          "llmMs": 1694,
+          "guards": []
+        },
+        {
+          "id": 11,
+          "item": "gruelling_adj",
+          "label": false,
+          "verdict": false,
+          "confidence": 0.99,
+          "issue": "meaning",
+          "llmMs": 2590,
+          "guards": []
+        },
+        {
+          "id": 12,
+          "item": "gruelling_adj",
+          "label": true,
+          "verdict": true,
+          "confidence": 0.99,
+          "issue": "none",
+          "llmMs": 2662,
+          "guards": []
+        },
+        {
+          "id": 13,
+          "item": "deplete_v",
+          "label": true,
+          "verdict": true,
+          "confidence": 1,
+          "issue": "none",
+          "llmMs": 2590,
+          "guards": []
+        },
+        {
+          "id": 14,
+          "item": "deplete_v",
+          "label": false,
+          "verdict": false,
+          "confidence": 0.99,
+          "issue": "meaning",
+          "llmMs": 2590,
+          "guards": []
+        },
+        {
+          "id": 15,
+          "item": "deplete_v",
+          "label": false,
+          "verdict": false,
+          "confidence": 0.99,
+          "issue": "collocation",
+          "llmMs": 2622,
+          "guards": []
+        },
+        {
+          "id": 16,
+          "item": "obsolete_adj",
+          "label": true,
+          "verdict": true,
+          "confidence": 0.99,
+          "issue": "none",
+          "llmMs": 1590,
+          "guards": []
+        },
+        {
+          "id": 17,
+          "item": "obsolete_adj",
+          "label": false,
+          "verdict": false,
+          "confidence": 0.99,
+          "issue": "meaning",
+          "llmMs": 2305,
+          "guards": []
+        },
+        {
+          "id": 18,
+          "item": "obsolete_adj",
+          "label": true,
+          "verdict": true,
+          "confidence": 0.99,
+          "issue": "none",
+          "llmMs": 1837,
+          "guards": []
+        },
+        {
+          "id": 19,
+          "item": "sedentary_adj",
+          "label": true,
+          "verdict": true,
+          "confidence": 0.99,
+          "issue": "none",
+          "llmMs": 1801,
+          "guards": []
+        },
+        {
+          "id": 20,
+          "item": "sedentary_adj",
+          "label": false,
+          "verdict": false,
+          "confidence": 0.99,
+          "issue": "meaning",
+          "llmMs": 2890,
+          "guards": []
+        },
+        {
+          "id": 21,
+          "item": "sedentary_adj",
+          "label": true,
+          "verdict": true,
+          "confidence": 0.99,
+          "issue": "none",
+          "llmMs": 1723,
+          "guards": []
+        },
+        {
+          "id": 22,
+          "item": "take_on_pv",
+          "label": true,
+          "verdict": true,
+          "confidence": 1,
+          "issue": "none",
+          "llmMs": 1665,
+          "guards": []
+        },
+        {
+          "id": 23,
+          "item": "take_on_pv",
+          "label": false,
+          "verdict": false,
+          "confidence": 0.99,
+          "issue": "meaning",
+          "llmMs": 1790,
+          "guards": []
+        },
+        {
+          "id": 24,
+          "item": "take_on_pv",
+          "label": true,
+          "verdict": true,
+          "confidence": 0.98,
+          "issue": "none",
+          "llmMs": 3611,
+          "guards": []
+        },
+        {
+          "id": 25,
+          "item": "foster_v",
+          "label": true,
+          "verdict": true,
+          "confidence": 1,
+          "issue": "none",
+          "llmMs": 1738,
+          "guards": []
+        },
+        {
+          "id": 26,
+          "item": "foster_v",
+          "label": false,
+          "verdict": false,
+          "confidence": 0.99,
+          "issue": "meaning",
+          "llmMs": 2421,
+          "guards": []
+        },
+        {
+          "id": 27,
+          "item": "foster_v",
+          "label": true,
+          "verdict": true,
+          "confidence": 0.99,
+          "issue": "none",
+          "llmMs": 1808,
+          "guards": []
+        },
+        {
+          "id": 28,
+          "item": "breathtaking_adj",
+          "label": true,
+          "verdict": true,
+          "confidence": 0.99,
+          "issue": "none",
+          "llmMs": 1659,
+          "guards": []
+        },
+        {
+          "id": 29,
+          "item": "breathtaking_adj",
+          "label": false,
+          "verdict": false,
+          "confidence": 0.99,
+          "issue": "meaning",
+          "llmMs": 2097,
+          "guards": []
+        },
+        {
+          "id": 30,
+          "item": "breathtaking_adj",
+          "label": false,
+          "verdict": false,
+          "confidence": 0.99,
+          "issue": "mention_not_use",
+          "llmMs": 2464,
+          "guards": []
+        }
+      ]
+    }
+  }
+}

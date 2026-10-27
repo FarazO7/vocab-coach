@@ -34,6 +34,7 @@ export const plan = (p: Partial<Plan> = {}): Plan => ({
   due: [],
   dueTotal: 0,
   seeds: [],
+  probe: null,
   ...p,
 });
 

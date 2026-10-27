@@ -2,7 +2,8 @@ import { describe, expect, it } from "vitest";
 import { dayOf } from "./days";
 import { getItem, LEXICON } from "./lexicon";
 import { planSession, seedPriority, sessionTopic } from "./planner";
-import { replay } from "./replay";
+import { Driver, judged, plan, seededHistory, T0, voice } from "../../test/helpers";
+import { dueItems, replay } from "./replay";
 import type { Ev, Profile } from "./types";
 
 const TZ = -330;
@@ -100,6 +101,46 @@ describe("planner (brief §5)", () => {
   it("puts a Practise now item first", () => {
     const p = planSession({ model: replay(pastSeeds(["hectic_adj"], -1)), profile, today, now: T, practise: "hectic_adj" });
     expect(p.due[0]).toBe("hectic_adj");
+  });
+
+  it("adds one unannounced day-7 probe for an item that isn't due (I24)", () => {
+    // Seeded 9 days ago (Good, due 3 days later), then reviewed Good 6 days ago, so its next review is still ahead.
+    const seeded = seededHistory("hectic_adj", 9, "s-9");
+    const review = new Driver(seeded, plan({ due: ["hectic_adj"] }), "s-6", T0 - 6 * DAY);
+    review.say(voice("Busy week."));
+    review.say(voice("My week was hectic with exams."), { judgement: judged(true) });
+    review.end();
+    const model = replay(review.events);
+    expect(dueItems(model, today, T)).toEqual([]);
+    const p = planSession({ model, profile, today, now: T });
+    expect(p.probe).toBe("hectic_adj");
+    expect(p.due).toEqual(["hectic_adj"]);
+  });
+
+  it("probes nothing younger than 7 days, and nothing already used after day 7", () => {
+    expect(planSession({ model: replay(pastSeeds(["hectic_adj"], -6)), profile, today, now: T }).probe).toBeNull();
+    const seeded = seededHistory("hectic_adj", 9, "s-9");
+    const late = new Driver(seeded, plan({ due: ["hectic_adj"] }), "s-1", T0 - DAY);
+    late.say(voice("Busy week."));
+    late.say(voice("My week was hectic with exams."), { judgement: judged(true) });
+    late.end();
+    expect(replay(late.events).items["hectic_adj"]?.usedLater).toBe(true);
+    expect(planSession({ model: replay(late.events), profile, today, now: T }).probe).toBeNull();
+  });
+
+  it("keeps a probe's outcome as evidence only: no FSRS change, but it feeds 'still used after 7 days'", () => {
+    const seeded = seededHistory("hectic_adj", 9, "s-9");
+    const review = new Driver(seeded, plan({ due: ["hectic_adj"] }), "s-6", T0 - 6 * DAY);
+    review.say(voice("Busy week."));
+    review.say(voice("My week was hectic with exams."), { judgement: judged(true) });
+    review.end();
+    const before = replay(review.events).items["hectic_adj"]!;
+    const probe = new Driver(review.events, planSession({ model: replay(review.events), profile, today, now: T }), "s0", T0);
+    expect(probe.say(voice("Long day today."))).toMatchObject({ type: "ELICIT", item_id: "hectic_adj" });
+    probe.say(voice("Today was so hectic at the office."), { judgement: judged(true) });
+    const after = probe.end().items["hectic_adj"]!;
+    expect(after.card).toEqual(before.card);
+    expect(after.usedLater).toBe(true);
   });
 
   it("rotates the session topic through chosen interests (I9)", () => {

@@ -1,14 +1,29 @@
 import { DEFAULTS } from "../config/defaults";
-import { confusable, getItem, LEXICON, lexiconIndex, type LexItem } from "./lexicon";
+import { diffDays } from "./days";
+import { confusable, getItem, isItemId, LEXICON, lexiconIndex, type LexItem } from "./lexicon";
 import { dueItems, type Model } from "./replay";
 import { CEFR, TOPICS, type Day, type ItemId, type LearnerLevel, type Profile, type Topic } from "./types";
 
 export interface Plan {
   topic: Topic;
   budgetS: number;
-  due: ItemId[];
+  due: ItemId[]; // items to elicit, in order (due items, then any day-7 probe)
   dueTotal: number;
   seeds: ItemId[];
+  probe: ItemId | null;
+}
+
+/**
+ * Should-have day-7 probe (I24): an unannounced ELICIT on an item first met 7+ days ago that isn't due and
+ * hasn't yet been used after day 7. It is not due, so replay keeps its outcome as evidence only (no FSRS update),
+ * and a success feeds "still used after 7 days".
+ */
+export function pickProbe(model: Model, today: Day, exclude: ItemId[]): ItemId | null {
+  const candidates = Object.values(model.items)
+    .filter((it) => isItemId(it.id) && !exclude.includes(it.id) && !it.usedLater && it.lastTouchedDay !== today)
+    .filter((it) => diffDays(it.seededDay, today) >= DEFAULTS.masteryMinDays)
+    .sort((a, b) => (a.seededDay < b.seededDay ? -1 : a.seededDay > b.seededDay ? 1 : lexiconIndex(a.id) - lexiconIndex(b.id)));
+  return candidates[0]?.id ?? null;
 }
 
 const rank = (c: (typeof CEFR)[number]) => CEFR.indexOf(c);
@@ -38,7 +53,9 @@ export function planSession(args: { model: Model; profile: Profile; today: Day; 
   const dueAll = dueItems(model, today, now);
   // I16: Practise now puts the item first; replay decides whether its outcome is scheduled.
   const ordered = practise ? [practise, ...dueAll.filter((id) => id !== practise)] : dueAll;
-  const due = ordered.slice(0, DEFAULTS.maxDuePerSession);
+  const scheduled = ordered.slice(0, DEFAULTS.maxDuePerSession);
+  const probe = scheduled.length < DEFAULTS.maxDuePerSession ? pickProbe(model, today, dueAll) : null;
+  const due = probe ? [...scheduled, probe] : scheduled;
 
   const seeds: ItemId[] = [];
   if (dueAll.length <= DEFAULTS.noSeedsWhenDueOver) {
@@ -63,5 +80,6 @@ export function planSession(args: { model: Model; profile: Profile; today: Day; 
     due,
     dueTotal: dueAll.length,
     seeds,
+    probe,
   };
 }

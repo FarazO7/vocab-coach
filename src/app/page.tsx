@@ -1,9 +1,12 @@
-// Placeholder until M3 builds the start screen.
-export default function Home() {
-  return (
-    <main>
-      <h1>Vocab Coach</h1>
-      <p>Turn words you half-know into words you actually say. The app is being built.</p>
-    </main>
-  );
+"use client";
+
+import { useData } from "../client/hooks";
+import { Home } from "../components/Home";
+import { Start } from "../components/Start";
+import { Loading } from "../components/ui";
+
+export default function Page() {
+  const data = useData();
+  if (!data) return <Loading />;
+  return data.profile ? <Home data={data} /> : <Start />;
 }

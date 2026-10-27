@@ -394,6 +394,12 @@ export function apply(prev: SessionState, result: TurnResult | null, clock: Cloc
   return { state: s, events };
 }
 
+/** "Report a wrong correction" (brief §10): stored in the local event log and included in the export. */
+export function reportCaption(prev: SessionState, caption: string, clock: Clock): { state: SessionState; events: Ev[] } {
+  const s = structuredClone(prev);
+  return { state: s, events: [emit(s, clock, { k: "report", caption: caption.slice(0, 600) })] };
+}
+
 /** Record the agent turn as actually played (barge-in truncates it). */
 export function played(prev: SessionState, text: string): SessionState {
   const s = structuredClone(prev);

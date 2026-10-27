@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background: #fafaf9; /* stone-50 */
+  color: #1c1917; /* stone-900 */
+}
+
+/* Brief §8: visible focus on everything interactive. */
+:focus-visible {
+  outline: 3px solid #0f766e; /* teal-700 */
+  outline-offset: 2px;
+  border-radius: 0.375rem;
+}

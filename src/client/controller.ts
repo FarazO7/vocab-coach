@@ -67,6 +67,7 @@ export interface View {
   recapText: string | null;
   state: SessionState | null;
   meter: Meter; // measured usage this session, for the cost meter
+  filler: boolean; // the filler phrase is playing
 }
 
 export interface Deps {
@@ -77,7 +78,10 @@ export interface Deps {
   perf?: () => number;
   /** Override mic setup (tests); default opens the real microphone. */
   mic?: () => Promise<{ recorder: Recorder | null; note: string | null }>;
+  fillerAfterMs?: number; // tests shorten it
 }
+
+export const FILLER_TEXT = "Hmm, let me think.";
 
 const INITIAL: View = {
   phase: "ready",
@@ -97,6 +101,7 @@ const INITIAL: View = {
   recapText: null,
   state: null,
   meter: EMPTY_METER,
+  filler: false,
 };
 
 const START_FAILED = "We couldn't start a session. Check your connection and try again.";
@@ -129,6 +134,7 @@ export class SessionController {
   private seq = 0;
   private turnStarted = 0;
   private perf: () => number;
+  private fillerClip: Promise<Blob | null> = Promise.resolve(null);
 
   constructor(private deps: Deps) {
     this.perf = deps.perf ?? (() => performance.now());
@@ -212,8 +218,37 @@ export class SessionController {
       voiceOut: info.voiceEnabled && this.deps.player !== null,
       modeNote,
     });
+    if (this.view.voiceOut) this.fillerClip = this.renderFiller();
     this.turnStarted = this.perf();
     await this.agent(started.directive, [], "", this.history);
+  }
+
+  /** Rendered once per session, in parallel with the opening turn, then reused (should-have filler). */
+  private async renderFiller(): Promise<Blob | null> {
+    try {
+      const res = await this.deps.api.tts(FILLER_TEXT);
+      this.bump({ ttsChars: FILLER_TEXT.length });
+      return await res.blob();
+    } catch (e) {
+      console.warn("filler unavailable:", e instanceof Error ? e.message : e);
+      return null;
+    }
+  }
+
+  /** Plays the filler once if the reply is still pending after 2.5 s. Resolves when it has finished. */
+  private fillerAfterDelay(pending: { done: boolean }): Promise<void> {
+    const player = this.deps.player;
+    if (!this.view.voiceOut || !player) return Promise.resolve();
+    return new Promise((resolve) => {
+      setTimeout(async () => {
+        const clip = await this.fillerClip;
+        if (pending.done || !clip || this.view.phase !== "thinking") return resolve();
+        this.set({ filler: true });
+        await player.playClip(clip, this.rate());
+        this.set({ filler: false });
+        resolve();
+      }, this.deps.fillerAfterMs ?? DEFAULTS.fillerAfterMs);
+    });
   }
 
   /** Tap (or Space): start talking, stop talking, or interrupt the agent (barge-in). */
@@ -357,12 +392,16 @@ export class SessionController {
     this.set({ phase: "thinking", directive });
     this.refreshChip();
     const t0 = this.perf();
+    const pending = { done: false };
+    const filler = this.fillerAfterDelay(pending);
     let response: TurnResponse | null = null;
     try {
       response = await this.deps.api.turn(this.request(directive, candidates, utterance, history, summary?.request));
     } catch (e) {
       console.warn("turn failed:", e instanceof Error ? e.message : e); // fall through to the lexicon template
     }
+    pending.done = true;
+    if (this.view.filler) await filler; // let a filler that has started finish before the reply
     if (response) {
       const u = response.usage;
       this.bump({ inputTokens: u.input_tokens, cachedTokens: u.cached_tokens, cacheWriteTokens: u.cache_write_tokens, outputTokens: u.output_tokens });

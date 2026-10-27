@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { Api } from "../../src/client/api";
-import { SessionController } from "../../src/client/controller";
+import { FILLER_TEXT, SessionController } from "../../src/client/controller";
 import type { PlayerLike, PlayOutcome } from "../../src/client/player";
 import { truncatePlayed } from "../../src/client/player";
 import { Store, type Backend } from "../../src/client/store";
@@ -130,6 +130,7 @@ describe("audio output", () => {
           else resolve({ stopped: false, fraction: 1 });
         }),
       replay: () => null,
+      playClip: async () => ({ stopped: false, fraction: 1 }),
       stop: () => holding?.({ stopped: true, fraction: 0.5 }),
     };
     const { ctl, requests, tts } = setup(() => ({ reply: "One two three four five six seven eight." }), [], true, player);
@@ -139,7 +140,7 @@ describe("audio output", () => {
     player.stop(); // interrupt halfway
     await starting;
     await ctl.submitText("Hello.");
-    expect(tts[0]).toBe("One two three four five six seven eight.");
+    expect(tts.filter((t) => t !== FILLER_TEXT)[0]).toBe("One two three four five six seven eight.");
     expect(requests[1]?.history[0]).toEqual({ speaker: "agent", text: "One two three four..." });
   });
 
@@ -150,11 +151,59 @@ describe("audio output", () => {
         throw new Error("decode failed");
       },
       replay: () => null,
+      playClip: async () => ({ stopped: false, fraction: 1 }),
       stop: () => undefined,
     });
     await ctl.start({ wantVoice: false });
     expect(ctl.view).toMatchObject({ phase: "idle", notice: "The audio didn't load, so here is the text." });
     expect(ctl.view.captions[0]?.text).toBe("Hello!");
+  });
+});
+
+describe("filler phrase (should-have)", () => {
+  function run(turnDelayMs: number) {
+    const clips: string[] = [];
+    const order: string[] = [];
+    const player: PlayerLike = {
+      unlock: () => undefined,
+      play: async () => {
+        order.push("reply");
+        return { stopped: false, fraction: 1 };
+      },
+      replay: () => null,
+      playClip: async () => {
+        clips.push("filler");
+        order.push("filler");
+        await new Promise((r) => setTimeout(r, 30)); // the reply arrives while the filler is still playing
+        return { stopped: false, fraction: 1 };
+      },
+      stop: () => undefined,
+    };
+    const store = new Store(memory(), () => 0);
+    store.update((d) => ({ ...d, adult: true, profile: { name: "", exam: "IELTS", level: "B1", interests: [], testDate: null } }));
+    const { api, requests, tts } = fakeApi(() => ({ reply: "Here is my reply." }), { voiceEnabled: true });
+    const slowApi: Api = { ...api, turn: async (r) => (await new Promise((res) => setTimeout(res, turnDelayMs)), api.turn(r)) };
+    let t = T0;
+    const ctl = new SessionController({ api: slowApi, player, store, clock: () => clockAt((t += 1000)), fillerAfterMs: 20, mic: async () => ({ recorder: null, note: null }) });
+    return { ctl, clips, order, requests, tts };
+  }
+
+  it("plays the cached filler once when the reply is slow, then the reply; never as a turn", async () => {
+    const { ctl, clips, order, tts, requests } = run(60);
+    await ctl.start({ wantVoice: false });
+    await ctl.submitText("Hello there.");
+    expect(clips).toHaveLength(2); // once per slow turn
+    expect(order).toEqual(["filler", "reply", "filler", "reply"]);
+    expect(tts.filter((t) => t === "Hmm, let me think.")).toHaveLength(1); // rendered once, then cached
+    expect(ctl.view.captions.map((c) => c.text)).toEqual(["Here is my reply.", "Here is my reply."]);
+    expect(requests[1]?.history.some((h) => h.text.includes("let me think"))).toBe(false);
+  });
+
+  it("stays quiet when the reply is quick", async () => {
+    const { ctl, clips } = run(0);
+    await ctl.start({ wantVoice: false });
+    await new Promise((r) => setTimeout(r, 40));
+    expect(clips).toHaveLength(0);
   });
 });
 

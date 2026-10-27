@@ -15,6 +15,8 @@ export interface PlayerLike {
   unlock(): void;
   play(res: Response, rate: number, onFirstAudio: () => void): Promise<PlayOutcome>;
   replay(rate: number): Promise<PlayOutcome> | null;
+  /** Plays a cached clip (the filler) without replacing the "last reply" that Repeat slower uses. */
+  playClip(clip: Blob, rate: number): Promise<PlayOutcome>;
   stop(): void;
 }
 
@@ -151,11 +153,14 @@ export class Player implements PlayerLike {
 
   /** Repeat slower (brief §7): the last reply again, no new API call. */
   replay(rate: number): Promise<PlayOutcome> | null {
-    if (!this.last) return null;
+    return this.last ? this.playClip(this.last, rate) : null;
+  }
+
+  playClip(clip: Blob, rate: number): Promise<PlayOutcome> {
     this.stop();
     this.cancelled = false;
     const outcome = new Promise<PlayOutcome>((resolve) => (this.finish = resolve));
-    this.setSrc(URL.createObjectURL(this.last));
+    this.setSrc(URL.createObjectURL(clip));
     this.begin(rate, () => undefined);
     return outcome;
   }

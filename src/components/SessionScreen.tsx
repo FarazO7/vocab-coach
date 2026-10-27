@@ -5,7 +5,7 @@ import { useEffect, useRef, useState, useSyncExternalStore, type FormEvent } fro
 import { getActive, setActive } from "../client/active";
 import { createApi } from "../client/api";
 import { clockNow } from "../client/clock";
-import { SessionController, type Phase, type View } from "../client/controller";
+import { FILLER_TEXT, SessionController, type Phase, type View } from "../client/controller";
 import { useData } from "../client/hooks";
 import { formatDay } from "../client/labels";
 import { Player } from "../client/player";
@@ -189,7 +189,7 @@ function Active({ ctl, view }: { ctl: SessionController; view: View }) {
           {view.voiceIn ? <MicIcon /> : <KeyboardIcon />}
         </button>
         <p className="text-sm font-medium text-stone-800" aria-live="polite">
-          {view.voiceIn ? orb.label : TYPING_LABEL[view.phase]}
+          {view.filler ? FILLER_TEXT : view.voiceIn ? orb.label : TYPING_LABEL[view.phase]}
         </p>
         <ChipView chip={view.chip} />
       </div>

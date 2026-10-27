@@ -29,4 +29,5 @@ export const DEFAULTS = {
   historyTurns: 8,
   ttsMaxChars: 600,
   masteryMinDays: 7,
+  fillerAfterMs: 2500, // should-have: a cached filler phrase when a reply takes over 2.5 s
 } as const;
